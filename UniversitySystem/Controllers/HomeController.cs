@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UniversitySystem.Filters;
 using UniversitySystem.Services;
 using UniversitySystem.ViewModels.User;
 
@@ -10,6 +11,7 @@ namespace UniversitySystem.Controllers
 {
     public class HomeController : Controller
     {
+        [AuthenticationFilter]
         public ActionResult Index()
         {
             UsersEditVM model = new UsersEditVM();

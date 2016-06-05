@@ -28,7 +28,7 @@
                     @if (UniversitySystem.Services.AuthenticationService.LoggedUser == null)
                     {
                         <li>@Html.ActionLink("Login", "Login", "Users")</li>
-                        <li><a href="~/Views/Shared/Contact.cshtml">Contact</a></li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     }
                     else
                     {

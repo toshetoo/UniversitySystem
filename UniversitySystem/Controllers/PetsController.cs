@@ -11,7 +11,7 @@ using UniversitySystem.ViewModels.Pet;
 
 namespace UniversitySystem.Controllers
 {
-    public class PetsController : Controller
+    public class PetsController : BaseController
     {
         public ActionResult List()
         {
@@ -99,7 +99,8 @@ namespace UniversitySystem.Controllers
             pet.ID = model.ID;
             pet.Name = model.Name;
             pet.Breed = model.Breed;
-            pet.PicUrl = model.PicUrl;            
+            pet.PicUrl = model.PicUrl;
+            pet.UserID = AuthenticationService.LoggedUser.ID;            
 
             petsRepo.Save(pet);
 

@@ -11,10 +11,11 @@ namespace UniversitySystem.ViewModels.User
         public int ID { get; set; }
         [Required(ErrorMessage = "Please enter a username!")]
         [RegularExpression(@"^([A-z -]+)$", ErrorMessage = "Username is not valid!")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Username shoudl contain between 3 and 50 characters")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Username shoudl contain between 3 and 20 characters")]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Please enter a password!")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Password shoudl contain between 3 and 30 characters")]
         public string Password { get; set; }        
 
         [Required(ErrorMessage = "Please enter your name!")]

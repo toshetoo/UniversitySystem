@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UniversitySystem.Filters;
 using UniversitySystem.Models;
 using UniversitySystem.Repositories;
 using UniversitySystem.Services;
@@ -45,7 +47,7 @@ namespace UniversitySystem.Controllers
 
             return View(model);
         }
-        [HttpPost]
+        [HttpPost]        
         public ActionResult Login()
         {
             AccountLoginVM model = new AccountLoginVM();
@@ -66,8 +68,9 @@ namespace UniversitySystem.Controllers
             AuthenticationService.Logout();
 
             return RedirectToAction("Login");
-        }        
+        }
 
+        [AuthenticationFilter]
         public ActionResult Edit(int? id)
         {
             User user = new User();
@@ -91,13 +94,15 @@ namespace UniversitySystem.Controllers
             model.FirstName = user.FirstName;
             model.LastName = user.LastName;
             model.Username = user.Username;
-            model.Password = user.Password;            
+            model.Password = user.Password;
+            model.PicUrl = user.PicUrl;       
 
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthenticationFilter]
         public ActionResult Edit()
         {
             UsersEditVM model = new UsersEditVM();
@@ -123,17 +128,40 @@ namespace UniversitySystem.Controllers
                 }
             }
 
+            if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
+            {
+                var imageExtension = Path.GetExtension(model.ImageUpload.FileName);
+
+                if (String.IsNullOrEmpty(imageExtension) || !imageExtension.Equals(".jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    ModelState.AddModelError(string.Empty, "Wrong image format.");
+                }
+                else
+                {
+                    string filePath = Server.MapPath("~/Uploads/");
+                    model.PicUrl = model.ImageUpload.FileName;
+                    model.ImageUpload.SaveAs(filePath + model.PicUrl);
+                }
+            }
+            else
+            {
+                model.PicUrl = "default.jpg";
+            }
+
             user.ID = model.ID;
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.Password = model.Password;
             user.Username = model.Username;
+            user.PicUrl = model.PicUrl;
+            AuthenticationService.LoggedUser.PicUrl = model.PicUrl;
 
             usersRepo.Save(user);
 
-            return RedirectToAction("List");
+            return RedirectToAction("Index", "Home");            
         }
 
+        [AuthenticationFilter]
         public ActionResult Delete(int? id)
         {
             UsersRepository usersRepo = new UsersRepository();

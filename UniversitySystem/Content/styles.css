@@ -9,8 +9,35 @@
 .photo {
     width:200px;
     height:200px;
+    margin:0 auto;
 }
 
 .center {
     margin:60px;
+}
+
+.user{
+    border: 1px solid black;
+    width:400px; 
+    height:400px;
+    display:inline-block;
+    margin:0 auto;
+}
+
+myInput {
+    width: 100px;
+}
+
+.left {
+    width: 700px;
+    display:inline-block;
+}
+
+.right {
+    width: 300px;
+    float:left;
+}
+
+body{
+    background-color:dodgerblue;
 }
