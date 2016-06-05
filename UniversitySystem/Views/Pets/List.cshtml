@@ -1,0 +1,27 @@
+﻿@model UniversitySystem.ViewModels.Pet.PetsListVM
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Edit")
+</p>
+
+
+@foreach (var item in Model.Pets) {
+    <div class="pets">
+        <div class="center">
+            <h2>@item.Name - @item.Breed</h2>
+            <img class="photo" src="~/Uploads/@item.PicUrl" alt="Image" />
+            <br />
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </div>
+    </div>            
+      
+}

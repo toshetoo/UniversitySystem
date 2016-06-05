@@ -1,0 +1,16 @@
+﻿@model UniversitySystem.ViewModels.User.UsersEditVM
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Здравей, готин!</h2>
+<div class="pets">    
+    <div class="center">
+        <h3>@Model.FirstName - @Model.LastName</h3>
+        <img class="photo" src="~/Uploads/@Model.PicUrl" alt="Image" />
+    </div>
+    @Html.ActionLink("Edit", "Edit", "Users")
+
+</div>

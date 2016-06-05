@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -104,10 +105,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\UniversitySystem.mdf" />
+    <Content Include="App_Data\UniversitySystem_log.ldf">
+      <DependentUpon>UniversitySystem.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -130,7 +136,7 @@
     <Compile Include="AppContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PetsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -148,11 +154,24 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\PetsRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="ViewModels\Account\AccountLoginVM.cs" />
+    <Compile Include="ViewModels\Account\AccountRegisterVM.cs" />
+    <Compile Include="ViewModels\Pet\PetsEditVM.cs" />
+    <Compile Include="ViewModels\Pet\PetsListVM.cs" />
+    <Compile Include="ViewModels\User\UsersEditVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Pets\List.cshtml" />
+    <Content Include="Views\Pets\Edit.cshtml" />
+    <Content Include="Views\Users\Register.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -161,11 +180,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="Uploads\" />
     <Folder Include="Views\Accounts\" />
-    <Folder Include="Views\Pets\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605132042353_init.resx">

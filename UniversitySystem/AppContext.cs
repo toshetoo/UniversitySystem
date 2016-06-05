@@ -10,7 +10,7 @@ namespace UniversitySystem
     public class AppContext : DbContext
     {
         public AppContext()
-            : base("UniversitySystemDB") { }
+            : base("MyDatabase") { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Pet> Pets { get; set; }

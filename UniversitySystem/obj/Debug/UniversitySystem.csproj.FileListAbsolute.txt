@@ -26,3 +26,4 @@ C:\Users\user1\Desktop\UniversitySystem\UniversitySystem\bin\System.Web.Optimiza
 C:\Users\user1\Desktop\UniversitySystem\UniversitySystem\bin\Web.Optimization.dll
 C:\Users\user1\Desktop\UniversitySystem\UniversitySystem\bin\WebGrease.dll
 C:\Users\user1\Desktop\UniversitySystem\UniversitySystem\obj\Debug\UniversitySystem.csprojResolveAssemblyReference.cache
+C:\Users\user1\Desktop\UniversitySystem\UniversitySystem\bin\Microsoft.Web.Infrastructure.dll

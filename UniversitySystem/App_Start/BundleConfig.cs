@@ -15,6 +15,7 @@ namespace ManagementSystem.App_Start
             bundles.Add(new StyleBundle("~/Content/bootstrap")
                 .Include("~/Content/bootstrap.css")
                 .Include("~/Content/bootstrap-theme.css")
+                .Include("~/Content/styles.css")
                 );          
 
             bundles.Add(new ScriptBundle("~/Scripts/bootstrap")

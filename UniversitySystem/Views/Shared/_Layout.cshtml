@@ -24,9 +24,20 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Profile", "Index", "Users")</li>
-                    <li>@Html.ActionLink("Pets", "List", "Pets")</li>
-                    <li>@Html.ActionLink("Users", "List", "Users")</li>
+                    
+                    @if (UniversitySystem.Services.AuthenticationService.LoggedUser == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Users")</li>
+                        <li><a href="~/Views/Shared/Contact.cshtml">Contact</a></li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Profile", "Index", "Home")</li>                        
+                        <li>@Html.ActionLink("Pets", "List", "Pets")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Users")</li>
+                        <li>@Html.ActionLink("Contact","Contact","Home")</li>
+                    }}
+                    
                 </ul>
             </div>
         </div>

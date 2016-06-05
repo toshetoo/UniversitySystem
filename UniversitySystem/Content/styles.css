@@ -1,0 +1,16 @@
+﻿.pets{
+    border:1px solid black; 
+    width:400px; 
+    height:400px;
+    display:inline-block;
+    margin:30px;
+}
+
+.photo {
+    width:200px;
+    height:200px;
+}
+
+.center {
+    margin:60px;
+}

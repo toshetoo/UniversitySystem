@@ -8,5 +8,9 @@ namespace UniversitySystem.Repositories
 {
     public class PetsRepository : BaseRepository<Pet>
     {
+        public PetsRepository():base()
+        {
+
+        }
     }
 }
